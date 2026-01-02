@@ -42,6 +42,39 @@
             z-index: 0;
         }
 
+        .lang-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            background: #1E1E1E;
+            color: #888;
+            border: 1px solid #333;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: #2A2A2A;
+            color: #FFD700;
+            border-color: #FFD700;
+        }
+
+        .lang-btn.active {
+            background: #FFD700;
+            color: #0A0A0A;
+            border-color: #FFD700;
+            font-weight: 600;
+        }
+
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -165,39 +198,116 @@
             .tagline {
                 font-size: 1em;
             }
+
+            .lang-selector {
+                top: 10px;
+                right: 10px;
+                gap: 5px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.85em;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="lang-selector">
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+
     <div class="container">
         <div class="logo-container">
             <img src="https://raw.githubusercontent.com/anhpati/lueur-legal/main/lueur-logo.png" alt="Lueur Logo" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#FFD700;color:#0A0A0A;font-size:2em;font-weight:bold;&quot;>L</div>'">
         </div>
         <h1>Lueur</h1>
-        <p class="tagline">Explorez le monde, révélez votre carte personnelle</p>
+        <p class="tagline" id="tagline"></p>
 
         <div class="links">
             <a href="privacy-policy.html">
                 <i data-lucide="shield" style="width: 24px; height: 24px;"></i>
-                <span>Politique de Confidentialité</span>
+                <span id="link-privacy"></span>
             </a>
             <a href="terms-of-service.html">
                 <i data-lucide="scroll-text" style="width: 24px; height: 24px;"></i>
-                <span>Conditions d'Utilisation</span>
+                <span id="link-terms"></span>
             </a>
             <a href="data-deletion.html">
                 <i data-lucide="trash-2" style="width: 24px; height: 24px;"></i>
-                <span>Suppression des Données</span>
+                <span id="link-deletion"></span>
             </a>
         </div>
 
         <div class="footer">
-            <p>© <script>document.write(new Date().getFullYear())</script> Lueur. Tous droits réservés.</p>
+            <p>© <script>document.write(new Date().getFullYear())</script> Lueur. <span id="footer-rights"></span></p>
         </div>
     </div>
 
     <script>
-        // Initialize Lucide icons
+        const translations = {
+            fr: {
+                tagline: "Explorez le monde, révélez votre carte personnelle",
+                linkPrivacy: "Politique de Confidentialité",
+                linkTerms: "Conditions d'Utilisation",
+                linkDeletion: "Suppression des Données",
+                footerRights: "Tous droits réservés."
+            },
+            en: {
+                tagline: "Explore the world, reveal your personal map",
+                linkPrivacy: "Privacy Policy",
+                linkTerms: "Terms of Service",
+                linkDeletion: "Data Deletion",
+                footerRights: "All rights reserved."
+            },
+            es: {
+                tagline: "Explora el mundo, revela tu mapa personal",
+                linkPrivacy: "Política de Privacidad",
+                linkTerms: "Condiciones de Uso",
+                linkDeletion: "Eliminación de Datos",
+                footerRights: "Todos los derechos reservados."
+            }
+        };
+
+        // Detect browser language
+        function detectLanguage() {
+            const saved = localStorage.getItem('lueur-lang');
+            if (saved && translations[saved]) return saved;
+
+            const browserLang = navigator.language.toLowerCase().split('-')[0];
+            return translations[browserLang] ? browserLang : 'fr';
+        }
+
+        // Update content
+        function updateContent(lang) {
+            const t = translations[lang];
+            document.documentElement.lang = lang;
+            document.getElementById('tagline').textContent = t.tagline;
+            document.getElementById('link-privacy').textContent = t.linkPrivacy;
+            document.getElementById('link-terms').textContent = t.linkTerms;
+            document.getElementById('link-deletion').textContent = t.linkDeletion;
+            document.getElementById('footer-rights').textContent = t.footerRights;
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Save preference
+            localStorage.setItem('lueur-lang', lang);
+        }
+
+        // Language selector
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                updateContent(btn.dataset.lang);
+            });
+        });
+
+        // Initialize
+        updateContent(detectLanguage());
         lucide.createIcons();
     </script>
 </body>

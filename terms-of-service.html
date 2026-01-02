@@ -4,329 +4,359 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conditions d'Utilisation - Lueur</title>
-    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #FFFFFF;
-            background: #0A0A0A;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #121212;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow:
-                0 0 40px rgba(255, 215, 0, 0.1),
-                0 4px 20px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 10px;
-        }
-
-        .logo-container {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            overflow: hidden;
-            flex-shrink: 0;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
-        .logo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        h1 {
-            color: #FFD700;
-            font-size: 2em;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-        }
-
-        .last-updated {
-            color: #888;
-            font-size: 0.9em;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            color: #FFD700;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-        }
-
-        p {
-            margin-bottom: 15px;
-            color: #A0A0A0;
-        }
-
-        ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-            color: #A0A0A0;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            color: #FFFFFF;
-        }
-
-        a {
-            color: #FFD700;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-
-        .warning {
-            background: #2d1f1f;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 4px solid #dc2626;
-        }
-
-        .warning-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .warning-header h2 {
-            margin: 0;
-            color: #dc2626;
-        }
-
-        .warning-header i {
-            color: #dc2626;
-        }
-
-        .contact {
-            background: #1E1E1E;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 30px;
-            border-left: 4px solid #FFD700;
-        }
-
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #888;
-            font-size: 0.9em;
-        }
-
-        .back-link:hover {
-            color: #FFD700;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; line-height: 1.6; color: #FFFFFF; background: #0A0A0A; padding: 20px; }
+        .lang-selector { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000; }
+        .lang-btn { background: #1E1E1E; color: #888; border: 1px solid #333; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.9em; transition: all 0.3s ease; }
+        .lang-btn:hover { background: #2A2A2A; color: #FFD700; border-color: #FFD700; }
+        .lang-btn.active { background: #FFD700; color: #0A0A0A; border-color: #FFD700; font-weight: 600; }
+        .container { max-width: 800px; margin: 0 auto; background: #121212; padding: 40px; border-radius: 16px; box-shadow: 0 0 40px rgba(255, 215, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 215, 0, 0.1); }
+        .header { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+        .logo-container { width: 48px; height: 48px; border-radius: 10px; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+        .logo-container img { width: 100%; height: 100%; object-fit: cover; }
+        h1 { color: #FFD700; font-size: 2em; text-shadow: 0 0 30px rgba(255, 215, 0, 0.3); }
+        .last-updated { color: #888; font-size: 0.9em; margin-bottom: 30px; }
+        h2 { color: #FFD700; margin-top: 30px; margin-bottom: 15px; font-size: 1.5em; text-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+        p { margin-bottom: 15px; color: #A0A0A0; }
+        ul { margin-left: 20px; margin-bottom: 15px; color: #A0A0A0; }
+        li { margin-bottom: 8px; }
+        strong { color: #FFFFFF; }
+        a { color: #FFD700; text-decoration: none; }
+        a:hover { text-decoration: underline; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+        .warning { background: #2d1f1f; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #dc2626; }
+        .warning-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .warning-header h2 { margin: 0; color: #dc2626; }
+        .warning-header i { color: #dc2626; }
+        .contact { background: #1E1E1E; padding: 20px; border-radius: 12px; margin-top: 30px; border-left: 4px solid #FFD700; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; text-align: center; color: #666; font-size: 0.9em; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #888; font-size: 0.9em; }
+        .back-link:hover { color: #FFD700; }
         @media (max-width: 600px) {
-            .container {
-                padding: 24px;
-            }
-
-            h1 {
-                font-size: 1.6em;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
+            .container { padding: 24px; }
+            h1 { font-size: 1.6em; }
+            .header { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .lang-selector { top: 10px; right: 10px; gap: 5px; }
+            .lang-btn { padding: 6px 12px; font-size: 0.85em; }
         }
     </style>
 </head>
 <body>
+    <div class="lang-selector">
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+
     <div class="container">
-        <a href="index.html" class="back-link">← Retour</a>
+        <a href="index.html" class="back-link" id="back-link"></a>
 
         <div class="header">
             <div class="logo-container">
                 <img src="https://raw.githubusercontent.com/anhpati/lueur-legal/main/lueur-logo.png" alt="Lueur Logo" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#FFD700;color:#0A0A0A;font-size:1.5em;font-weight:bold;&quot;>L</div>'">
             </div>
-            <h1>Conditions d'Utilisation</h1>
+            <h1 id="title"></h1>
         </div>
-        <p class="last-updated">Dernière mise à jour : 25 décembre 2025</p>
+        <p class="last-updated" id="last-updated"></p>
 
-        <p>
-            En utilisant l'application mobile Lueur, vous acceptez les présentes conditions d'utilisation.
-            Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'application.
-        </p>
-
-        <h2>1. Description du service</h2>
-        <p>
-            Lueur est une application mobile de géolocalisation qui permet aux utilisateurs de :
-        </p>
-        <ul>
-            <li>Explorer leur environnement et révéler progressivement une carte personnelle</li>
-            <li>Suivre leurs statistiques d'exploration (distance, surface, achievements)</li>
-            <li>Exporter leur carte explorée sous forme d'image</li>
-            <li>Débloquer des achievements en fonction de leurs explorations</li>
-        </ul>
-
-        <h2>2. Acceptation des conditions</h2>
-        <p>
-            En téléchargeant, installant ou utilisant Lueur, vous acceptez d'être lié par ces conditions.
-            Si vous n'êtes pas d'accord avec une partie de ces conditions, vous devez cesser immédiatement
-            d'utiliser l'application.
-        </p>
-
-        <h2>3. Utilisation de l'application</h2>
-        <p>Vous vous engagez à :</p>
-        <ul>
-            <li>Utiliser l'application uniquement à des fins légales et conformes à ces conditions</li>
-            <li>Ne pas tenter de contourner les mécanismes de sécurité de l'application</li>
-            <li>Ne pas utiliser l'application d'une manière qui pourrait endommager, désactiver ou surcharger nos systèmes</li>
-            <li>Respecter les lois locales concernant l'utilisation de GPS et la géolocalisation</li>
-        </ul>
-
-        <div class="warning">
-            <div class="warning-header">
-                <i data-lucide="alert-triangle" style="width: 24px; height: 24px;"></i>
-                <h2>Sécurité et Responsabilité</h2>
-            </div>
-            <p>
-                <strong>Restez vigilant lors de vos explorations.</strong> Lueur vous encourage à explorer votre environnement,
-                mais votre sécurité est votre responsabilité. Ne mettez pas votre vie en danger pour révéler des zones.
-            </p>
-            <ul>
-                <li>Ne pénétrez pas dans des propriétés privées sans autorisation</li>
-                <li>Respectez les panneaux d'interdiction et les zones dangereuses</li>
-                <li>Soyez conscient de votre environnement lors de vos déplacements</li>
-                <li>N'utilisez pas l'application en conduisant ou dans des situations dangereuses</li>
-            </ul>
-        </div>
-
-        <h2>4. Propriété intellectuelle</h2>
-        <p>
-            Tous les droits de propriété intellectuelle relatifs à Lueur (code source, design, logo, assets)
-            appartiennent au développeur. Vous ne pouvez pas copier, modifier, distribuer ou créer des œuvres
-            dérivées sans autorisation écrite préalable.
-        </p>
-        <p>
-            Les cartes utilisées par Lueur proviennent de <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>,
-            sous licence <a href="https://opendatacommons.org/licenses/odbl/" target="_blank">ODbL</a>.
-        </p>
-
-        <h2>5. Achats intégrés</h2>
-        <p>
-            Lueur propose un abonnement optionnel "Lueur Premium" avec les fonctionnalités suivantes :
-        </p>
-        <ul>
-            <li>Exploration mondiale illimitée (dépassement de la limite de 100km autour de votre point de départ)</li>
-            <li>Téléchargement de vos données d'exploration (sauvegarde locale de vos tracés GPS)</li>
-            <li>Accès anticipé aux nouvelles fonctionnalités (thèmes personnalisés, nouveaux succès, etc.)</li>
-        </ul>
-        <p>
-            Les achats sont gérés par Google Play Store. Les conditions de remboursement suivent
-            <a href="https://support.google.com/googleplay/answer/2479637" target="_blank">les politiques de Google Play</a>.
-        </p>
-
-        <h2>6. Limitation de responsabilité</h2>
-        <p>
-            Lueur est fourni "en l'état" sans garantie d'aucune sorte. Nous ne garantissons pas que l'application
-            fonctionnera sans interruption ou sera exempte d'erreurs.
-        </p>
-        <p>
-            <strong>Nous ne sommes pas responsables de :</strong>
-        </p>
-        <ul>
-            <li>Blessures ou dommages résultant de l'utilisation de l'application</li>
-            <li>Perte de données en cas de dysfonctionnement de votre appareil</li>
-            <li>Précision des données GPS (qui dépend de votre appareil et de votre environnement)</li>
-            <li>Consommation de batterie liée au suivi GPS en arrière-plan</li>
-        </ul>
-
-        <h2>7. Données personnelles</h2>
-        <p>
-            L'utilisation de vos données personnelles est régie par notre
-            <a href="privacy-policy.html">Politique de Confidentialité</a>.
-            Toutes vos données GPS sont stockées localement sur votre appareil et ne sont jamais transmises
-            à des serveurs externes.
-        </p>
-
-        <h2>8. Modifications de l'application</h2>
-        <p>
-            Nous nous réservons le droit de modifier, suspendre ou interrompre tout ou partie de l'application
-            à tout moment, sans préavis. Nous ne sommes pas responsables envers vous ou tout tiers en cas de
-            modification, suspension ou interruption de l'application.
-        </p>
-
-        <h2>9. Modifications des conditions</h2>
-        <p>
-            Nous pouvons mettre à jour ces conditions d'utilisation à tout moment. Les modifications seront
-            publiées sur cette page avec une nouvelle date de "Dernière mise à jour". Votre utilisation
-            continue de l'application après publication des modifications constitue votre acceptation des
-            nouvelles conditions.
-        </p>
-
-        <h2>10. Résiliation</h2>
-        <p>
-            Vous pouvez cesser d'utiliser Lueur à tout moment en désinstallant l'application de votre appareil.
-            Nous nous réservons le droit de suspendre ou résilier votre accès à l'application en cas de violation
-            de ces conditions.
-        </p>
-
-        <h2>11. Loi applicable</h2>
-        <p>
-            Ces conditions sont régies par les lois françaises. Tout litige relatif à ces conditions sera
-            soumis à la compétence exclusive des tribunaux français.
-        </p>
+        <div id="content"></div>
 
         <div class="contact">
-            <h2 style="margin-top: 0;">Contact</h2>
-            <p style="margin-bottom: 0;">
-                Pour toute question concernant ces conditions d'utilisation, contactez-nous :
-                <br><br>
-                <strong>Email :</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a>
-            </p>
+            <h2 style="margin-top: 0;" id="contact-title"></h2>
+            <p style="margin-bottom: 0;" id="contact-text"></p>
         </div>
 
         <div class="footer">
-            <p>© <script>document.write(new Date().getFullYear())</script> Lueur. Tous droits réservés.</p>
+            <p>© <script>document.write(new Date().getFullYear())</script> Lueur. <span id="footer-rights"></span></p>
         </div>
     </div>
 
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+        const t = {
+            fr: {
+                backLink: "← Retour",
+                title: "Conditions d'Utilisation",
+                lastUpdated: "Dernière mise à jour : 25 décembre 2025",
+                content: `
+                    <p>En utilisant l'application mobile Lueur, vous acceptez les présentes conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'application.</p>
+
+                    <h2>1. Description du service</h2>
+                    <p>Lueur est une application mobile de géolocalisation qui permet aux utilisateurs de :</p>
+                    <ul>
+                        <li>Explorer leur environnement et révéler progressivement une carte personnelle</li>
+                        <li>Suivre leurs statistiques d'exploration (distance, surface, achievements)</li>
+                        <li>Exporter leur carte explorée sous forme d'image</li>
+                        <li>Débloquer des achievements en fonction de leurs explorations</li>
+                    </ul>
+
+                    <h2>2. Acceptation des conditions</h2>
+                    <p>En téléchargeant, installant ou utilisant Lueur, vous acceptez d'être lié par ces conditions. Si vous n'êtes pas d'accord avec une partie de ces conditions, vous devez cesser immédiatement d'utiliser l'application.</p>
+
+                    <h2>3. Utilisation de l'application</h2>
+                    <p>Vous vous engagez à :</p>
+                    <ul>
+                        <li>Utiliser l'application uniquement à des fins légales et conformes à ces conditions</li>
+                        <li>Ne pas tenter de contourner les mécanismes de sécurité de l'application</li>
+                        <li>Ne pas utiliser l'application d'une manière qui pourrait endommager, désactiver ou surcharger nos systèmes</li>
+                        <li>Respecter les lois locales concernant l'utilisation de GPS et la géolocalisation</li>
+                    </ul>
+
+                    <div class="warning">
+                        <div class="warning-header">
+                            <i data-lucide="alert-triangle" style="width: 24px; height: 24px;"></i>
+                            <h2>Sécurité et Responsabilité</h2>
+                        </div>
+                        <p><strong>Restez vigilant lors de vos explorations.</strong> Lueur vous encourage à explorer votre environnement, mais votre sécurité est votre responsabilité. Ne mettez pas votre vie en danger pour révéler des zones.</p>
+                        <ul>
+                            <li>Ne pénétrez pas dans des propriétés privées sans autorisation</li>
+                            <li>Respectez les panneaux d'interdiction et les zones dangereuses</li>
+                            <li>Soyez conscient de votre environnement lors de vos déplacements</li>
+                            <li>N'utilisez pas l'application en conduisant ou dans des situations dangereuses</li>
+                        </ul>
+                    </div>
+
+                    <h2>4. Propriété intellectuelle</h2>
+                    <p>Tous les droits de propriété intellectuelle relatifs à Lueur (code source, design, logo, assets) appartiennent au développeur. Vous ne pouvez pas copier, modifier, distribuer ou créer des œuvres dérivées sans autorisation écrite préalable.</p>
+                    <p>Les cartes utilisées par Lueur proviennent de <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>, sous licence <a href="https://opendatacommons.org/licenses/odbl/" target="_blank">ODbL</a>.</p>
+
+                    <h2>5. Achats intégrés</h2>
+                    <p>Lueur propose un abonnement optionnel "Lueur Premium" avec les fonctionnalités suivantes :</p>
+                    <ul>
+                        <li>Exploration mondiale illimitée (dépassement de la limite de 100km autour de votre point de départ)</li>
+                        <li>Téléchargement de vos données d'exploration (sauvegarde locale de vos tracés GPS)</li>
+                        <li>Accès anticipé aux nouvelles fonctionnalités (thèmes personnalisés, nouveaux succès, etc.)</li>
+                    </ul>
+                    <p>Les achats sont gérés par Google Play Store. Les conditions de remboursement suivent <a href="https://support.google.com/googleplay/answer/2479637" target="_blank">les politiques de Google Play</a>.</p>
+
+                    <h2>6. Limitation de responsabilité</h2>
+                    <p>Lueur est fourni "en l'état" sans garantie d'aucune sorte. Nous ne garantissons pas que l'application fonctionnera sans interruption ou sera exempte d'erreurs.</p>
+                    <p><strong>Nous ne sommes pas responsables de :</strong></p>
+                    <ul>
+                        <li>Blessures ou dommages résultant de l'utilisation de l'application</li>
+                        <li>Perte de données en cas de dysfonctionnement de votre appareil</li>
+                        <li>Précision des données GPS (qui dépend de votre appareil et de votre environnement)</li>
+                        <li>Consommation de batterie liée au suivi GPS en arrière-plan</li>
+                    </ul>
+
+                    <h2>7. Données personnelles</h2>
+                    <p>L'utilisation de vos données personnelles est régie par notre <a href="privacy-policy.html">Politique de Confidentialité</a>. Toutes vos données GPS sont stockées localement sur votre appareil et ne sont jamais transmises à des serveurs externes.</p>
+
+                    <h2>8. Modifications de l'application</h2>
+                    <p>Nous nous réservons le droit de modifier, suspendre ou interrompre tout ou partie de l'application à tout moment, sans préavis. Nous ne sommes pas responsables envers vous ou tout tiers en cas de modification, suspension ou interruption de l'application.</p>
+
+                    <h2>9. Modifications des conditions</h2>
+                    <p>Nous pouvons mettre à jour ces conditions d'utilisation à tout moment. Les modifications seront publiées sur cette page avec une nouvelle date de "Dernière mise à jour". Votre utilisation continue de l'application après publication des modifications constitue votre acceptation des nouvelles conditions.</p>
+
+                    <h2>10. Résiliation</h2>
+                    <p>Vous pouvez cesser d'utiliser Lueur à tout moment en désinstallant l'application de votre appareil. Nous nous réservons le droit de suspendre ou résilier votre accès à l'application en cas de violation de ces conditions.</p>
+
+                    <h2>11. Loi applicable</h2>
+                    <p>Ces conditions sont régies par les lois françaises. Tout litige relatif à ces conditions sera soumis à la compétence exclusive des tribunaux français.</p>
+                `,
+                contactTitle: "Contact",
+                contactText: `Pour toute question concernant ces conditions d'utilisation, contactez-nous :<br><br><strong>Email :</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a>`,
+                footerRights: "Tous droits réservés."
+            },
+            en: {
+                backLink: "← Back",
+                title: "Terms of Service",
+                lastUpdated: "Last updated: December 25, 2025",
+                content: `
+                    <p>By using the Lueur mobile application, you accept these terms of service. If you do not accept these terms, please do not use the application.</p>
+
+                    <h2>1. Service Description</h2>
+                    <p>Lueur is a mobile geolocation application that allows users to:</p>
+                    <ul>
+                        <li>Explore their environment and progressively reveal a personal map</li>
+                        <li>Track their exploration statistics (distance, area, achievements)</li>
+                        <li>Export their explored map as an image</li>
+                        <li>Unlock achievements based on their explorations</li>
+                    </ul>
+
+                    <h2>2. Acceptance of Terms</h2>
+                    <p>By downloading, installing, or using Lueur, you agree to be bound by these terms. If you do not agree with any part of these terms, you must immediately stop using the application.</p>
+
+                    <h2>3. Use of the Application</h2>
+                    <p>You agree to:</p>
+                    <ul>
+                        <li>Use the application only for legal purposes and in accordance with these terms</li>
+                        <li>Not attempt to circumvent the application's security mechanisms</li>
+                        <li>Not use the application in a way that could damage, disable, or overload our systems</li>
+                        <li>Respect local laws regarding GPS use and geolocation</li>
+                    </ul>
+
+                    <div class="warning">
+                        <div class="warning-header">
+                            <i data-lucide="alert-triangle" style="width: 24px; height: 24px;"></i>
+                            <h2>Safety and Responsibility</h2>
+                        </div>
+                        <p><strong>Stay vigilant during your explorations.</strong> Lueur encourages you to explore your environment, but your safety is your responsibility. Do not endanger your life to reveal areas.</p>
+                        <ul>
+                            <li>Do not enter private property without authorization</li>
+                            <li>Respect prohibition signs and dangerous areas</li>
+                            <li>Be aware of your surroundings while moving</li>
+                            <li>Do not use the application while driving or in dangerous situations</li>
+                        </ul>
+                    </div>
+
+                    <h2>4. Intellectual Property</h2>
+                    <p>All intellectual property rights relating to Lueur (source code, design, logo, assets) belong to the developer. You may not copy, modify, distribute, or create derivative works without prior written permission.</p>
+                    <p>Maps used by Lueur come from <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>, under <a href="https://opendatacommons.org/licenses/odbl/" target="_blank">ODbL</a> license.</p>
+
+                    <h2>5. In-App Purchases</h2>
+                    <p>Lueur offers an optional "Lueur Premium" subscription with the following features:</p>
+                    <ul>
+                        <li>Unlimited worldwide exploration (exceeding the 100km limit around your starting point)</li>
+                        <li>Download of your exploration data (local backup of your GPS tracks)</li>
+                        <li>Early access to new features (custom themes, new achievements, etc.)</li>
+                    </ul>
+                    <p>Purchases are managed by Google Play Store. Refund conditions follow <a href="https://support.google.com/googleplay/answer/2479637" target="_blank">Google Play policies</a>.</p>
+
+                    <h2>6. Limitation of Liability</h2>
+                    <p>Lueur is provided "as is" without warranty of any kind. We do not guarantee that the application will function without interruption or be error-free.</p>
+                    <p><strong>We are not responsible for:</strong></p>
+                    <ul>
+                        <li>Injuries or damages resulting from use of the application</li>
+                        <li>Data loss in case of device malfunction</li>
+                        <li>GPS data accuracy (which depends on your device and environment)</li>
+                        <li>Battery consumption related to background GPS tracking</li>
+                    </ul>
+
+                    <h2>7. Personal Data</h2>
+                    <p>The use of your personal data is governed by our <a href="privacy-policy.html">Privacy Policy</a>. All your GPS data is stored locally on your device and never transmitted to external servers.</p>
+
+                    <h2>8. Application Modifications</h2>
+                    <p>We reserve the right to modify, suspend, or discontinue all or part of the application at any time, without notice. We are not responsible to you or any third party for any modification, suspension, or discontinuation of the application.</p>
+
+                    <h2>9. Changes to Terms</h2>
+                    <p>We may update these terms of service at any time. Changes will be published on this page with a new "Last updated" date. Your continued use of the application after publication of changes constitutes your acceptance of the new terms.</p>
+
+                    <h2>10. Termination</h2>
+                    <p>You may stop using Lueur at any time by uninstalling the application from your device. We reserve the right to suspend or terminate your access to the application in case of violation of these terms.</p>
+
+                    <h2>11. Governing Law</h2>
+                    <p>These terms are governed by French law. Any dispute relating to these terms will be subject to the exclusive jurisdiction of French courts.</p>
+                `,
+                contactTitle: "Contact",
+                contactText: `For any questions regarding these terms of service, contact us:<br><br><strong>Email:</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a>`,
+                footerRights: "All rights reserved."
+            },
+            es: {
+                backLink: "← Volver",
+                title: "Condiciones de Uso",
+                lastUpdated: "Última actualización: 25 de diciembre de 2025",
+                content: `
+                    <p>Al usar la aplicación móvil Lueur, aceptas estas condiciones de uso. Si no aceptas estas condiciones, por favor no uses la aplicación.</p>
+
+                    <h2>1. Descripción del Servicio</h2>
+                    <p>Lueur es una aplicación móvil de geolocalización que permite a los usuarios:</p>
+                    <ul>
+                        <li>Explorar su entorno y revelar progresivamente un mapa personal</li>
+                        <li>Seguir sus estadísticas de exploración (distancia, área, logros)</li>
+                        <li>Exportar su mapa explorado como imagen</li>
+                        <li>Desbloquear logros según sus exploraciones</li>
+                    </ul>
+
+                    <h2>2. Aceptación de las Condiciones</h2>
+                    <p>Al descargar, instalar o usar Lueur, aceptas estar vinculado por estas condiciones. Si no estás de acuerdo con alguna parte de estas condiciones, debes dejar de usar la aplicación inmediatamente.</p>
+
+                    <h2>3. Uso de la Aplicación</h2>
+                    <p>Te comprometes a:</p>
+                    <ul>
+                        <li>Usar la aplicación solo con fines legales y de acuerdo con estas condiciones</li>
+                        <li>No intentar eludir los mecanismos de seguridad de la aplicación</li>
+                        <li>No usar la aplicación de manera que pueda dañar, desactivar o sobrecargar nuestros sistemas</li>
+                        <li>Respetar las leyes locales sobre el uso de GPS y geolocalización</li>
+                    </ul>
+
+                    <div class="warning">
+                        <div class="warning-header">
+                            <i data-lucide="alert-triangle" style="width: 24px; height: 24px;"></i>
+                            <h2>Seguridad y Responsabilidad</h2>
+                        </div>
+                        <p><strong>Permanece alerta durante tus exploraciones.</strong> Lueur te anima a explorar tu entorno, pero tu seguridad es tu responsabilidad. No pongas en peligro tu vida para revelar áreas.</p>
+                        <ul>
+                            <li>No entres en propiedades privadas sin autorización</li>
+                            <li>Respeta las señales de prohibición y las áreas peligrosas</li>
+                            <li>Sé consciente de tu entorno mientras te desplazas</li>
+                            <li>No uses la aplicación mientras conduces o en situaciones peligrosas</li>
+                        </ul>
+                    </div>
+
+                    <h2>4. Propiedad Intelectual</h2>
+                    <p>Todos los derechos de propiedad intelectual relacionados con Lueur (código fuente, diseño, logo, assets) pertenecen al desarrollador. No puedes copiar, modificar, distribuir o crear obras derivadas sin permiso previo por escrito.</p>
+                    <p>Los mapas utilizados por Lueur provienen de <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>, bajo licencia <a href="https://opendatacommons.org/licenses/odbl/" target="_blank">ODbL</a>.</p>
+
+                    <h2>5. Compras Integradas</h2>
+                    <p>Lueur ofrece una suscripción opcional "Lueur Premium" con las siguientes características:</p>
+                    <ul>
+                        <li>Exploración mundial ilimitada (superando el límite de 100km alrededor de tu punto de partida)</li>
+                        <li>Descarga de tus datos de exploración (copia de seguridad local de tus trazas GPS)</li>
+                        <li>Acceso anticipado a nuevas funciones (temas personalizados, nuevos logros, etc.)</li>
+                    </ul>
+                    <p>Las compras son gestionadas por Google Play Store. Las condiciones de reembolso siguen las <a href="https://support.google.com/googleplay/answer/2479637" target="_blank">políticas de Google Play</a>.</p>
+
+                    <h2>6. Limitación de Responsabilidad</h2>
+                    <p>Lueur se proporciona "tal cual" sin garantía de ningún tipo. No garantizamos que la aplicación funcione sin interrupciones o esté libre de errores.</p>
+                    <p><strong>No somos responsables de:</strong></p>
+                    <ul>
+                        <li>Lesiones o daños resultantes del uso de la aplicación</li>
+                        <li>Pérdida de datos en caso de mal funcionamiento de tu dispositivo</li>
+                        <li>Precisión de los datos GPS (que depende de tu dispositivo y entorno)</li>
+                        <li>Consumo de batería relacionado con el seguimiento GPS en segundo plano</li>
+                    </ul>
+
+                    <h2>7. Datos Personales</h2>
+                    <p>El uso de tus datos personales se rige por nuestra <a href="privacy-policy.html">Política de Privacidad</a>. Todos tus datos GPS se almacenan localmente en tu dispositivo y nunca se transmiten a servidores externos.</p>
+
+                    <h2>8. Modificaciones de la Aplicación</h2>
+                    <p>Nos reservamos el derecho de modificar, suspender o descontinuar toda o parte de la aplicación en cualquier momento, sin previo aviso. No somos responsables ante ti o terceros por cualquier modificación, suspensión o descontinuación de la aplicación.</p>
+
+                    <h2>9. Cambios en las Condiciones</h2>
+                    <p>Podemos actualizar estas condiciones de uso en cualquier momento. Los cambios se publicarán en esta página con una nueva fecha de "Última actualización". Tu uso continuado de la aplicación después de la publicación de cambios constituye tu aceptación de las nuevas condiciones.</p>
+
+                    <h2>10. Terminación</h2>
+                    <p>Puedes dejar de usar Lueur en cualquier momento desinstalando la aplicación de tu dispositivo. Nos reservamos el derecho de suspender o terminar tu acceso a la aplicación en caso de violación de estas condiciones.</p>
+
+                    <h2>11. Ley Aplicable</h2>
+                    <p>Estas condiciones se rigen por la ley francesa. Cualquier disputa relacionada con estas condiciones estará sujeta a la jurisdicción exclusiva de los tribunales franceses.</p>
+                `,
+                contactTitle: "Contacto",
+                contactText: `Para cualquier pregunta sobre estas condiciones de uso, contáctanos:<br><br><strong>Email:</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a>`,
+                footerRights: "Todos los derechos reservados."
+            }
+        };
+
+        function detectLanguage() {
+            const saved = localStorage.getItem('lueur-lang');
+            if (saved && t[saved]) return saved;
+            const browserLang = navigator.language.toLowerCase().split('-')[0];
+            return t[browserLang] ? browserLang : 'fr';
+        }
+
+        function updateContent(lang) {
+            const trans = t[lang];
+            document.documentElement.lang = lang;
+            document.getElementById('back-link').textContent = trans.backLink;
+            document.getElementById('title').textContent = trans.title;
+            document.getElementById('last-updated').textContent = trans.lastUpdated;
+            document.getElementById('content').innerHTML = trans.content;
+            document.getElementById('contact-title').textContent = trans.contactTitle;
+            document.getElementById('contact-text').innerHTML = trans.contactText;
+            document.getElementById('footer-rights').textContent = trans.footerRights;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            localStorage.setItem('lueur-lang', lang);
+            lucide.createIcons();
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => updateContent(btn.dataset.lang));
+        });
+
+        updateContent(detectLanguage());
     </script>
 </body>
 </html>

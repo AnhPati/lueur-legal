@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique de Confidentialité - Lueur</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -17,6 +18,39 @@
             color: #FFFFFF;
             background: #0A0A0A;
             padding: 20px;
+        }
+
+        .lang-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            background: #1E1E1E;
+            color: #888;
+            border: 1px solid #333;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: #2A2A2A;
+            color: #FFD700;
+            border-color: #FFD700;
+        }
+
+        .lang-btn.active {
+            background: #FFD700;
+            color: #0A0A0A;
+            border-color: #FFD700;
+            font-weight: 600;
         }
 
         .container {
@@ -144,105 +178,249 @@
                 align-items: flex-start;
                 gap: 12px;
             }
+
+            .lang-selector {
+                top: 10px;
+                right: 10px;
+                gap: 5px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.85em;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="lang-selector">
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+
     <div class="container">
-        <a href="index.html" class="back-link">← Retour</a>
+        <a href="index.html" class="back-link" id="back-link"></a>
 
         <div class="header">
             <div class="logo-container">
                 <img src="https://raw.githubusercontent.com/anhpati/lueur-legal/main/lueur-logo.png" alt="Lueur Logo" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#FFD700;color:#0A0A0A;font-size:1.5em;font-weight:bold;&quot;>L</div>'">
             </div>
-            <h1>Politique de Confidentialité</h1>
+            <h1 id="title"></h1>
         </div>
-        <p class="last-updated">Dernière mise à jour : 25 décembre 2025</p>
+        <p class="last-updated" id="last-updated"></p>
 
-        <p>
-            Lueur est une application mobile de géolocalisation qui vous permet d'explorer le monde et de révéler
-            progressivement une carte personnelle. Nous prenons votre vie privée au sérieux.
-        </p>
-
-        <h2>1. Données collectées</h2>
-        <p>Lueur collecte et stocke <strong>uniquement en local sur votre appareil</strong> les données suivantes :</p>
-        <ul>
-            <li><strong>Positions GPS</strong> : Vos coordonnées géographiques pour créer votre carte personnelle</li>
-            <li><strong>Statistiques d'exploration</strong> : Distance parcourue, surface révélée, achievements débloqués</li>
-            <li><strong>Préférences de l'application</strong> : Langue, paramètres d'affichage</li>
-        </ul>
-
-        <h2>2. Utilisation des données</h2>
-        <p>Vos données GPS sont utilisées exclusivement pour :</p>
-        <ul>
-            <li>Révéler les zones que vous avez explorées sur votre carte personnelle</li>
-            <li>Calculer vos statistiques (distance, surface, achievements)</li>
-            <li>Vous permettre d'exporter votre carte explorée</li>
-        </ul>
-
-        <h2>3. Stockage des données</h2>
-        <p>
-            <strong>Toutes vos données sont stockées localement sur votre appareil</strong> via SQLite.
-            Nous n'utilisons aucun serveur externe, aucune base de données cloud, et nous ne transférons
-            jamais vos données GPS vers des serveurs tiers.
-        </p>
-
-        <h2>4. Partage des données</h2>
-        <p>
-            <strong>Nous ne partageons AUCUNE de vos données</strong> avec des tiers, des annonceurs,
-            ou des services externes. Vos explorations restent strictement privées.
-        </p>
-
-        <h2>5. Permissions demandées</h2>
-        <p>L'application demande les permissions suivantes :</p>
-        <ul>
-            <li><strong>Localisation en arrière-plan</strong> : Pour continuer à enregistrer vos explorations
-                même lorsque l'application est en arrière-plan</li>
-            <li><strong>Notifications</strong> : Pour vous rappeler d'explorer si vous êtes inactif pendant plusieurs jours
-                (optionnel)</li>
-            <li><strong>Stockage</strong> : Pour exporter votre carte en image PNG (optionnel)</li>
-        </ul>
-
-        <h2>6. Suppression des données</h2>
-        <p>
-            Vous pouvez supprimer toutes vos données à tout moment via les paramètres de l'application
-            (section "Données" > "Réinitialiser les données"). Cette action est irréversible.
-        </p>
-        <p>
-            Désinstaller l'application supprime également automatiquement toutes les données stockées localement.
-        </p>
-
-        <h2>7. Sécurité</h2>
-        <p>
-            Vos données sont protégées par les mécanismes de sécurité de votre système d'exploitation
-            (Android/iOS). Nous n'avons pas accès à vos données car elles ne quittent jamais votre appareil.
-        </p>
-
-        <h2>8. Modifications de cette politique</h2>
-        <p>
-            Nous pouvons mettre à jour cette politique de confidentialité. Toute modification sera
-            publiée sur cette page avec une nouvelle date de "Dernière mise à jour".
-        </p>
-
-        <h2>9. Hébergement de cette page</h2>
-        <p>
-            Cette politique de confidentialité est hébergée sur GitHub Pages. Conformément à la
-            <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection" target="_blank">politique de GitHub Pages</a>,
-            votre adresse IP est enregistrée à des fins de sécurité lors de votre visite de cette page.
-        </p>
+        <div id="content"></div>
 
         <div class="contact">
-            <h2 style="margin-top: 0;">Contact</h2>
-            <p style="margin-bottom: 0;">
-                Pour toute question concernant cette politique de confidentialité, contactez-nous :
-                <br><br>
-                <strong>Email :</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a>
-            </p>
+            <h2 style="margin-top: 0;" id="contact-title"></h2>
+            <p style="margin-bottom: 0;" id="contact-text"></p>
         </div>
 
         <div class="footer">
-            <p>© <script>document.write(new Date().getFullYear())</script> Lueur. Tous droits réservés.</p>
+            <p>© <script>document.write(new Date().getFullYear())</script> Lueur. <span id="footer-rights"></span></p>
         </div>
     </div>
+
+    <script>
+        const translations = {
+            fr: {
+                backLink: "← Retour",
+                title: "Politique de Confidentialité",
+                lastUpdated: "Dernière mise à jour : 25 décembre 2025",
+                content: `
+                    <p>Lueur est une application mobile de géolocalisation qui vous permet d'explorer le monde et de révéler progressivement une carte personnelle. Nous prenons votre vie privée au sérieux.</p>
+
+                    <h2>1. Données collectées</h2>
+                    <p>Lueur collecte et stocke <strong>uniquement en local sur votre appareil</strong> les données suivantes :</p>
+                    <ul>
+                        <li><strong>Positions GPS</strong> : Vos coordonnées géographiques pour créer votre carte personnelle</li>
+                        <li><strong>Statistiques d'exploration</strong> : Distance parcourue, surface révélée, achievements débloqués</li>
+                        <li><strong>Préférences de l'application</strong> : Langue, paramètres d'affichage</li>
+                    </ul>
+
+                    <h2>2. Utilisation des données</h2>
+                    <p>Vos données GPS sont utilisées exclusivement pour :</p>
+                    <ul>
+                        <li>Révéler les zones que vous avez explorées sur votre carte personnelle</li>
+                        <li>Calculer vos statistiques (distance, surface, achievements)</li>
+                        <li>Vous permettre d'exporter votre carte explorée</li>
+                    </ul>
+
+                    <h2>3. Stockage des données</h2>
+                    <p><strong>Toutes vos données sont stockées localement sur votre appareil</strong> via SQLite. Nous n'utilisons aucun serveur externe, aucune base de données cloud, et nous ne transférons jamais vos données GPS vers des serveurs tiers.</p>
+
+                    <h2>4. Partage des données</h2>
+                    <p><strong>Nous ne partageons AUCUNE de vos données</strong> avec des tiers, des annonceurs, ou des services externes. Vos explorations restent strictement privées.</p>
+
+                    <h2>5. Permissions demandées</h2>
+                    <p>L'application demande les permissions suivantes :</p>
+                    <ul>
+                        <li><strong>Localisation en arrière-plan</strong> : Pour continuer à enregistrer vos explorations même lorsque l'application est en arrière-plan</li>
+                        <li><strong>Notifications</strong> : Pour vous rappeler d'explorer si vous êtes inactif pendant plusieurs jours (optionnel)</li>
+                        <li><strong>Stockage</strong> : Pour exporter votre carte en image PNG (optionnel)</li>
+                    </ul>
+
+                    <h2>6. Suppression des données</h2>
+                    <p>Vous pouvez supprimer toutes vos données à tout moment via les paramètres de l'application (section "Données" > "Réinitialiser les données"). Cette action est irréversible.</p>
+                    <p>Désinstaller l'application supprime également automatiquement toutes les données stockées localement.</p>
+
+                    <h2>7. Sécurité</h2>
+                    <p>Vos données sont protégées par les mécanismes de sécurité de votre système d'exploitation (Android/iOS). Nous n'avons pas accès à vos données car elles ne quittent jamais votre appareil.</p>
+
+                    <h2>8. Modifications de cette politique</h2>
+                    <p>Nous pouvons mettre à jour cette politique de confidentialité. Toute modification sera publiée sur cette page avec une nouvelle date de "Dernière mise à jour".</p>
+
+                    <h2>9. Hébergement de cette page</h2>
+                    <p>Cette politique de confidentialité est hébergée sur GitHub Pages. Conformément à la <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection" target="_blank">politique de GitHub Pages</a>, votre adresse IP est enregistrée à des fins de sécurité lors de votre visite de cette page.</p>
+                `,
+                contactTitle: "Contact",
+                contactText: `Pour toute question concernant cette politique de confidentialité, contactez-nous :<br><br><strong>Email :</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a>`,
+                footerRights: "Tous droits réservés."
+            },
+            en: {
+                backLink: "← Back",
+                title: "Privacy Policy",
+                lastUpdated: "Last updated: December 25, 2025",
+                content: `
+                    <p>Lueur is a mobile geolocation application that allows you to explore the world and progressively reveal a personal map. We take your privacy seriously.</p>
+
+                    <h2>1. Data Collected</h2>
+                    <p>Lueur collects and stores <strong>only locally on your device</strong> the following data:</p>
+                    <ul>
+                        <li><strong>GPS Positions</strong>: Your geographic coordinates to create your personal map</li>
+                        <li><strong>Exploration Statistics</strong>: Distance traveled, area revealed, achievements unlocked</li>
+                        <li><strong>Application Preferences</strong>: Language, display settings</li>
+                    </ul>
+
+                    <h2>2. Data Usage</h2>
+                    <p>Your GPS data is used exclusively to:</p>
+                    <ul>
+                        <li>Reveal the areas you have explored on your personal map</li>
+                        <li>Calculate your statistics (distance, area, achievements)</li>
+                        <li>Allow you to export your explored map</li>
+                    </ul>
+
+                    <h2>3. Data Storage</h2>
+                    <p><strong>All your data is stored locally on your device</strong> via SQLite. We do not use any external servers, cloud databases, and we never transfer your GPS data to third-party servers.</p>
+
+                    <h2>4. Data Sharing</h2>
+                    <p><strong>We do NOT share ANY of your data</strong> with third parties, advertisers, or external services. Your explorations remain strictly private.</p>
+
+                    <h2>5. Permissions Requested</h2>
+                    <p>The application requests the following permissions:</p>
+                    <ul>
+                        <li><strong>Background Location</strong>: To continue recording your explorations even when the application is in the background</li>
+                        <li><strong>Notifications</strong>: To remind you to explore if you are inactive for several days (optional)</li>
+                        <li><strong>Storage</strong>: To export your map as a PNG image (optional)</li>
+                    </ul>
+
+                    <h2>6. Data Deletion</h2>
+                    <p>You can delete all your data at any time via the application settings ("Data" section > "Reset Data"). This action is irreversible.</p>
+                    <p>Uninstalling the application also automatically deletes all locally stored data.</p>
+
+                    <h2>7. Security</h2>
+                    <p>Your data is protected by your operating system's security mechanisms (Android/iOS). We do not have access to your data because it never leaves your device.</p>
+
+                    <h2>8. Changes to This Policy</h2>
+                    <p>We may update this privacy policy. Any changes will be published on this page with a new "Last updated" date.</p>
+
+                    <h2>9. Hosting of This Page</h2>
+                    <p>This privacy policy is hosted on GitHub Pages. In accordance with <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection" target="_blank">GitHub Pages policy</a>, your IP address is recorded for security purposes when you visit this page.</p>
+                `,
+                contactTitle: "Contact",
+                contactText: `For any questions regarding this privacy policy, contact us:<br><br><strong>Email:</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a>`,
+                footerRights: "All rights reserved."
+            },
+            es: {
+                backLink: "← Volver",
+                title: "Política de Privacidad",
+                lastUpdated: "Última actualización: 25 de diciembre de 2025",
+                content: `
+                    <p>Lueur es una aplicación móvil de geolocalización que te permite explorar el mundo y revelar progresivamente un mapa personal. Nos tomamos tu privacidad en serio.</p>
+
+                    <h2>1. Datos Recopilados</h2>
+                    <p>Lueur recopila y almacena <strong>solo localmente en tu dispositivo</strong> los siguientes datos:</p>
+                    <ul>
+                        <li><strong>Posiciones GPS</strong>: Tus coordenadas geográficas para crear tu mapa personal</li>
+                        <li><strong>Estadísticas de Exploración</strong>: Distancia recorrida, área revelada, logros desbloqueados</li>
+                        <li><strong>Preferencias de la Aplicación</strong>: Idioma, configuración de visualización</li>
+                    </ul>
+
+                    <h2>2. Uso de Datos</h2>
+                    <p>Tus datos GPS se utilizan exclusivamente para:</p>
+                    <ul>
+                        <li>Revelar las áreas que has explorado en tu mapa personal</li>
+                        <li>Calcular tus estadísticas (distancia, área, logros)</li>
+                        <li>Permitirte exportar tu mapa explorado</li>
+                    </ul>
+
+                    <h2>3. Almacenamiento de Datos</h2>
+                    <p><strong>Todos tus datos se almacenan localmente en tu dispositivo</strong> a través de SQLite. No utilizamos ningún servidor externo, base de datos en la nube, y nunca transferimos tus datos GPS a servidores de terceros.</p>
+
+                    <h2>4. Compartir Datos</h2>
+                    <p><strong>NO compartimos NINGUNO de tus datos</strong> con terceros, anunciantes o servicios externos. Tus exploraciones permanecen estrictamente privadas.</p>
+
+                    <h2>5. Permisos Solicitados</h2>
+                    <p>La aplicación solicita los siguientes permisos:</p>
+                    <ul>
+                        <li><strong>Ubicación en Segundo Plano</strong>: Para continuar grabando tus exploraciones incluso cuando la aplicación está en segundo plano</li>
+                        <li><strong>Notificaciones</strong>: Para recordarte explorar si estás inactivo durante varios días (opcional)</li>
+                        <li><strong>Almacenamiento</strong>: Para exportar tu mapa como imagen PNG (opcional)</li>
+                    </ul>
+
+                    <h2>6. Eliminación de Datos</h2>
+                    <p>Puedes eliminar todos tus datos en cualquier momento a través de la configuración de la aplicación (sección "Datos" > "Restablecer Datos"). Esta acción es irreversible.</p>
+                    <p>Desinstalar la aplicación también elimina automáticamente todos los datos almacenados localmente.</p>
+
+                    <h2>7. Seguridad</h2>
+                    <p>Tus datos están protegidos por los mecanismos de seguridad de tu sistema operativo (Android/iOS). No tenemos acceso a tus datos porque nunca salen de tu dispositivo.</p>
+
+                    <h2>8. Cambios en Esta Política</h2>
+                    <p>Podemos actualizar esta política de privacidad. Cualquier cambio se publicará en esta página con una nueva fecha de "Última actualización".</p>
+
+                    <h2>9. Alojamiento de Esta Página</h2>
+                    <p>Esta política de privacidad está alojada en GitHub Pages. De acuerdo con la <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection" target="_blank">política de GitHub Pages</a>, tu dirección IP se registra con fines de seguridad cuando visitas esta página.</p>
+                `,
+                contactTitle: "Contacto",
+                contactText: `Para cualquier pregunta sobre esta política de privacidad, contáctanos:<br><br><strong>Email:</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a>`,
+                footerRights: "Todos los derechos reservados."
+            }
+        };
+
+        function detectLanguage() {
+            const saved = localStorage.getItem('lueur-lang');
+            if (saved && translations[saved]) return saved;
+            const browserLang = navigator.language.toLowerCase().split('-')[0];
+            return translations[browserLang] ? browserLang : 'fr';
+        }
+
+        function updateContent(lang) {
+            const t = translations[lang];
+            document.documentElement.lang = lang;
+            document.getElementById('back-link').textContent = t.backLink;
+            document.getElementById('title').textContent = t.title;
+            document.getElementById('last-updated').textContent = t.lastUpdated;
+            document.getElementById('content').innerHTML = t.content;
+            document.getElementById('contact-title').textContent = t.contactTitle;
+            document.getElementById('contact-text').innerHTML = t.contactText;
+            document.getElementById('footer-rights').textContent = t.footerRights;
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            localStorage.setItem('lueur-lang', lang);
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                updateContent(btn.dataset.lang);
+            });
+        });
+
+        updateContent(detectLanguage());
+        lucide.createIcons();
+    </script>
 </body>
 </html>

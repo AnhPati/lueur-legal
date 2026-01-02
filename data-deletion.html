@@ -4,315 +4,312 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suppression des Données - Lueur</title>
-    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #FFFFFF;
-            background: #0A0A0A;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #121212;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow:
-                0 0 40px rgba(255, 215, 0, 0.1),
-                0 4px 20px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 10px;
-        }
-
-        .logo-container {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            overflow: hidden;
-            flex-shrink: 0;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
-        .logo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        h1 {
-            color: #FFD700;
-            font-size: 2em;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-        }
-
-        .last-updated {
-            color: #888;
-            font-size: 0.9em;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            color: #FFD700;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-        }
-
-        p {
-            margin-bottom: 15px;
-            color: #A0A0A0;
-        }
-
-        ol {
-            margin-left: 20px;
-            margin-bottom: 15px;
-            color: #A0A0A0;
-        }
-
-        li {
-            margin-bottom: 12px;
-        }
-
-        strong {
-            color: #FFFFFF;
-        }
-
-        a {
-            color: #FFD700;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-
-        .info-box {
-            background: #1E1E1E;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-            border-left: 4px solid #FFD700;
-        }
-
-        .info-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .info-header h2 {
-            margin: 0;
-            color: #FFD700;
-        }
-
-        .info-header i {
-            color: #FFD700;
-        }
-
-        .warning {
-            background: #2d1f1f;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 4px solid #dc2626;
-        }
-
-        .warning-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .warning-header h2 {
-            margin: 0;
-            color: #dc2626;
-        }
-
-        .warning-header i {
-            color: #dc2626;
-        }
-
-        .contact {
-            background: #1E1E1E;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 30px;
-            border-left: 4px solid #FFD700;
-        }
-
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #888;
-            font-size: 0.9em;
-        }
-
-        .back-link:hover {
-            color: #FFD700;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; line-height: 1.6; color: #FFFFFF; background: #0A0A0A; padding: 20px; }
+        .lang-selector { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000; }
+        .lang-btn { background: #1E1E1E; color: #888; border: 1px solid #333; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.9em; transition: all 0.3s ease; }
+        .lang-btn:hover { background: #2A2A2A; color: #FFD700; border-color: #FFD700; }
+        .lang-btn.active { background: #FFD700; color: #0A0A0A; border-color: #FFD700; font-weight: 600; }
+        .container { max-width: 800px; margin: 0 auto; background: #121212; padding: 40px; border-radius: 16px; box-shadow: 0 0 40px rgba(255, 215, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 215, 0, 0.1); }
+        .header { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+        .logo-container { width: 48px; height: 48px; border-radius: 10px; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+        .logo-container img { width: 100%; height: 100%; object-fit: cover; }
+        h1 { color: #FFD700; font-size: 2em; text-shadow: 0 0 30px rgba(255, 215, 0, 0.3); }
+        .last-updated { color: #888; font-size: 0.9em; margin-bottom: 30px; }
+        h2 { color: #FFD700; margin-top: 30px; margin-bottom: 15px; font-size: 1.5em; text-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+        p { margin-bottom: 15px; color: #A0A0A0; }
+        ol { margin-left: 20px; margin-bottom: 15px; color: #A0A0A0; }
+        li { margin-bottom: 12px; }
+        strong { color: #FFFFFF; }
+        a { color: #FFD700; text-decoration: none; }
+        a:hover { text-decoration: underline; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+        .info-box { background: #1E1E1E; padding: 20px; border-radius: 12px; margin: 20px 0; border-left: 4px solid #FFD700; }
+        .info-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .info-header h2 { margin: 0; color: #FFD700; }
+        .info-header i { color: #FFD700; }
+        .warning { background: #2d1f1f; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #dc2626; }
+        .warning-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .warning-header h2 { margin: 0; color: #dc2626; }
+        .warning-header i { color: #dc2626; }
+        .contact { background: #1E1E1E; padding: 20px; border-radius: 12px; margin-top: 30px; border-left: 4px solid #FFD700; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; text-align: center; color: #666; font-size: 0.9em; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #888; font-size: 0.9em; }
+        .back-link:hover { color: #FFD700; }
         @media (max-width: 600px) {
-            .container {
-                padding: 24px;
-            }
-
-            h1 {
-                font-size: 1.6em;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
+            .container { padding: 24px; }
+            h1 { font-size: 1.6em; }
+            .header { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .lang-selector { top: 10px; right: 10px; gap: 5px; }
+            .lang-btn { padding: 6px 12px; font-size: 0.85em; }
         }
     </style>
 </head>
 <body>
+    <div class="lang-selector">
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+
     <div class="container">
-        <a href="index.html" class="back-link">← Retour</a>
+        <a href="index.html" class="back-link" id="back-link"></a>
 
         <div class="header">
             <div class="logo-container">
                 <img src="https://raw.githubusercontent.com/anhpati/lueur-legal/main/lueur-logo.png" alt="Lueur Logo" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#FFD700;color:#0A0A0A;font-size:1.5em;font-weight:bold;&quot;>L</div>'">
             </div>
-            <h1>Suppression des Données</h1>
+            <h1 id="title"></h1>
         </div>
-        <p class="last-updated">Dernière mise à jour : 2 janvier 2026</p>
+        <p class="last-updated" id="last-updated"></p>
 
-        <p>
-            <strong>Lueur</strong> stocke toutes vos données <strong>localement sur votre appareil</strong>.
-            Aucune donnée n'est transmise à nos serveurs car nous n'utilisons aucun serveur.
-        </p>
-
-        <div class="info-box">
-            <div class="info-header">
-                <i data-lucide="info" style="width: 24px; height: 24px;"></i>
-                <h2>Stockage 100% local</h2>
-            </div>
-            <p>
-                Toutes vos données GPS, statistiques et préférences sont stockées dans une base de données
-                SQLite directement sur votre téléphone. Nous ne possédons aucune copie de vos données.
-            </p>
-        </div>
-
-        <h2>Comment supprimer vos données</h2>
-        <p>
-            Vous avez <strong>deux méthodes</strong> pour supprimer toutes vos données d'exploration :
-        </p>
-
-        <h2>Méthode 1 : Depuis l'application</h2>
-        <ol>
-            <li>Ouvrez l'application <strong>Lueur</strong></li>
-            <li>Allez dans l'onglet <strong>Paramètres</strong> (icône engrenage en bas à droite)</li>
-            <li>Faites défiler jusqu'à la section <strong>"Données"</strong></li>
-            <li>Appuyez sur <strong>"Réinitialiser les données"</strong></li>
-            <li>Confirmez la suppression</li>
-        </ol>
-        <p>
-            ✅ <strong>Résultat :</strong> Toutes vos données GPS, statistiques, achievements et préférences seront supprimées définitivement.
-        </p>
-
-        <h2>Méthode 2 : Désinstallation de l'application</h2>
-        <ol>
-            <li>Appuyez longuement sur l'icône <strong>Lueur</strong> sur votre écran d'accueil</li>
-            <li>Sélectionnez <strong>"Désinstaller"</strong> ou <strong>"Supprimer"</strong></li>
-            <li>Confirmez la désinstallation</li>
-        </ol>
-        <p>
-            ✅ <strong>Résultat :</strong> L'application et <strong>toutes ses données</strong> seront supprimées automatiquement de votre appareil.
-        </p>
-
-        <div class="warning">
-            <div class="warning-header">
-                <i data-lucide="alert-triangle" style="width: 24px; height: 24px;"></i>
-                <h2>Action irréversible</h2>
-            </div>
-            <p>
-                <strong>Attention :</strong> La suppression de vos données est <strong>définitive et irréversible</strong>.
-                Une fois supprimées, vos explorations, statistiques et achievements ne pourront pas être récupérés.
-            </p>
-            <p>
-                Nous n'avons aucune sauvegarde de vos données car elles n'ont jamais quitté votre appareil.
-            </p>
-        </div>
-
-        <h2>Types de données supprimées</h2>
-        <p>Les données suivantes seront supprimées :</p>
-        <ol>
-            <li><strong>Positions GPS</strong> : Toutes vos coordonnées géographiques enregistrées</li>
-            <li><strong>Carte d'exploration</strong> : Les zones que vous avez révélées sur la carte</li>
-            <li><strong>Statistiques</strong> : Distance parcourue, surface explorée, temps d'exploration</li>
-            <li><strong>Achievements</strong> : Tous les succès débloqués</li>
-            <li><strong>Préférences</strong> : Langue, paramètres d'affichage</li>
-        </ol>
-
-        <h2>Données conservées (aucune)</h2>
-        <p>
-            <strong>Nous ne conservons AUCUNE donnée</strong> après la suppression ou la désinstallation de l'application,
-            car nous ne possédons aucun serveur et n'avons jamais eu accès à vos données.
-        </p>
-        <p>
-            Seul Google Play peut conserver l'historique de vos achats d'abonnements (géré par Google, pas par nous).
-        </p>
-
-        <h2>Pas besoin de nous contacter</h2>
-        <p>
-            Vous n'avez <strong>pas besoin de nous envoyer un email</strong> pour demander la suppression de vos données.
-            Vous pouvez les supprimer vous-même instantanément via les méthodes ci-dessus.
-        </p>
-        <p>
-            Nous n'avons aucun accès à vos données et ne pouvons donc pas les supprimer à votre place.
-        </p>
+        <div id="content"></div>
 
         <div class="contact">
-            <h2 style="margin-top: 0;">Questions ?</h2>
-            <p style="margin-bottom: 0;">
-                Si vous avez des questions sur la suppression de vos données ou sur notre politique de confidentialité :
-                <br><br>
-                <strong>Email :</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a>
-                <br>
-                <strong>Politique de confidentialité :</strong> <a href="privacy-policy.html">Lire la politique complète</a>
-            </p>
+            <h2 style="margin-top: 0;" id="contact-title"></h2>
+            <p style="margin-bottom: 0;" id="contact-text"></p>
         </div>
 
         <div class="footer">
-            <p>© <script>document.write(new Date().getFullYear())</script> Lueur. Tous droits réservés.</p>
+            <p>© <script>document.write(new Date().getFullYear())</script> Lueur. <span id="footer-rights"></span></p>
         </div>
     </div>
 
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+        const t = {
+            fr: {
+                backLink: "← Retour",
+                title: "Suppression des Données",
+                lastUpdated: "Dernière mise à jour : 2 janvier 2026",
+                content: `
+                    <p><strong>Lueur</strong> stocke toutes vos données <strong>localement sur votre appareil</strong>. Aucune donnée n'est transmise à nos serveurs car nous n'utilisons aucun serveur.</p>
+
+                    <div class="info-box">
+                        <div class="info-header">
+                            <i data-lucide="info" style="width: 24px; height: 24px;"></i>
+                            <h2>Stockage 100% local</h2>
+                        </div>
+                        <p>Toutes vos données GPS, statistiques et préférences sont stockées dans une base de données SQLite directement sur votre téléphone. Nous ne possédons aucune copie de vos données.</p>
+                    </div>
+
+                    <h2>Comment supprimer vos données</h2>
+                    <p>Vous avez <strong>deux méthodes</strong> pour supprimer toutes vos données d'exploration :</p>
+
+                    <h2>Méthode 1 : Depuis l'application</h2>
+                    <ol>
+                        <li>Ouvrez l'application <strong>Lueur</strong></li>
+                        <li>Allez dans l'onglet <strong>Paramètres</strong> (icône engrenage en bas à droite)</li>
+                        <li>Faites défiler jusqu'à la section <strong>"Données"</strong></li>
+                        <li>Appuyez sur <strong>"Réinitialiser les données"</strong></li>
+                        <li>Confirmez la suppression</li>
+                    </ol>
+                    <p>✅ <strong>Résultat :</strong> Toutes vos données GPS, statistiques, achievements et préférences seront supprimées définitivement.</p>
+
+                    <h2>Méthode 2 : Désinstallation de l'application</h2>
+                    <ol>
+                        <li>Appuyez longuement sur l'icône <strong>Lueur</strong> sur votre écran d'accueil</li>
+                        <li>Sélectionnez <strong>"Désinstaller"</strong> ou <strong>"Supprimer"</strong></li>
+                        <li>Confirmez la désinstallation</li>
+                    </ol>
+                    <p>✅ <strong>Résultat :</strong> L'application et <strong>toutes ses données</strong> seront supprimées automatiquement de votre appareil.</p>
+
+                    <div class="warning">
+                        <div class="warning-header">
+                            <i data-lucide="alert-triangle" style="width: 24px; height: 24px;"></i>
+                            <h2>Action irréversible</h2>
+                        </div>
+                        <p><strong>Attention :</strong> La suppression de vos données est <strong>définitive et irréversible</strong>. Une fois supprimées, vos explorations, statistiques et achievements ne pourront pas être récupérés.</p>
+                        <p>Nous n'avons aucune sauvegarde de vos données car elles n'ont jamais quitté votre appareil.</p>
+                    </div>
+
+                    <h2>Types de données supprimées</h2>
+                    <p>Les données suivantes seront supprimées :</p>
+                    <ol>
+                        <li><strong>Positions GPS</strong> : Toutes vos coordonnées géographiques enregistrées</li>
+                        <li><strong>Carte d'exploration</strong> : Les zones que vous avez révélées sur la carte</li>
+                        <li><strong>Statistiques</strong> : Distance parcourue, surface explorée, temps d'exploration</li>
+                        <li><strong>Achievements</strong> : Tous les succès débloqués</li>
+                        <li><strong>Préférences</strong> : Langue, paramètres d'affichage</li>
+                    </ol>
+
+                    <h2>Données conservées (aucune)</h2>
+                    <p><strong>Nous ne conservons AUCUNE donnée</strong> après la suppression ou la désinstallation de l'application, car nous ne possédons aucun serveur et n'avons jamais eu accès à vos données.</p>
+                    <p>Seul Google Play peut conserver l'historique de vos achats d'abonnements (géré par Google, pas par nous).</p>
+
+                    <h2>Pas besoin de nous contacter</h2>
+                    <p>Vous n'avez <strong>pas besoin de nous envoyer un email</strong> pour demander la suppression de vos données. Vous pouvez les supprimer vous-même instantanément via les méthodes ci-dessus.</p>
+                    <p>Nous n'avons aucun accès à vos données et ne pouvons donc pas les supprimer à votre place.</p>
+                `,
+                contactTitle: "Questions ?",
+                contactText: `Si vous avez des questions sur la suppression de vos données ou sur notre politique de confidentialité :<br><br><strong>Email :</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a><br><strong>Politique de confidentialité :</strong> <a href="privacy-policy.html">Lire la politique complète</a>`,
+                footerRights: "Tous droits réservés."
+            },
+            en: {
+                backLink: "← Back",
+                title: "Data Deletion",
+                lastUpdated: "Last updated: January 2, 2026",
+                content: `
+                    <p><strong>Lueur</strong> stores all your data <strong>locally on your device</strong>. No data is transmitted to our servers because we don't use any servers.</p>
+
+                    <div class="info-box">
+                        <div class="info-header">
+                            <i data-lucide="info" style="width: 24px; height: 24px;"></i>
+                            <h2>100% Local Storage</h2>
+                        </div>
+                        <p>All your GPS data, statistics, and preferences are stored in a SQLite database directly on your phone. We do not have any copy of your data.</p>
+                    </div>
+
+                    <h2>How to Delete Your Data</h2>
+                    <p>You have <strong>two methods</strong> to delete all your exploration data:</p>
+
+                    <h2>Method 1: From the App</h2>
+                    <ol>
+                        <li>Open the <strong>Lueur</strong> app</li>
+                        <li>Go to the <strong>Settings</strong> tab (gear icon at bottom right)</li>
+                        <li>Scroll down to the <strong>"Data"</strong> section</li>
+                        <li>Tap <strong>"Reset Data"</strong></li>
+                        <li>Confirm deletion</li>
+                    </ol>
+                    <p>✅ <strong>Result:</strong> All your GPS data, statistics, achievements, and preferences will be permanently deleted.</p>
+
+                    <h2>Method 2: Uninstall the App</h2>
+                    <ol>
+                        <li>Long press the <strong>Lueur</strong> icon on your home screen</li>
+                        <li>Select <strong>"Uninstall"</strong> or <strong>"Delete"</strong></li>
+                        <li>Confirm uninstallation</li>
+                    </ol>
+                    <p>✅ <strong>Result:</strong> The app and <strong>all its data</strong> will be automatically deleted from your device.</p>
+
+                    <div class="warning">
+                        <div class="warning-header">
+                            <i data-lucide="alert-triangle" style="width: 24px; height: 24px;"></i>
+                            <h2>Irreversible Action</h2>
+                        </div>
+                        <p><strong>Warning:</strong> Deleting your data is <strong>permanent and irreversible</strong>. Once deleted, your explorations, statistics, and achievements cannot be recovered.</p>
+                        <p>We have no backup of your data because it never left your device.</p>
+                    </div>
+
+                    <h2>Types of Data Deleted</h2>
+                    <p>The following data will be deleted:</p>
+                    <ol>
+                        <li><strong>GPS Positions</strong>: All your recorded geographic coordinates</li>
+                        <li><strong>Exploration Map</strong>: The areas you revealed on the map</li>
+                        <li><strong>Statistics</strong>: Distance traveled, area explored, exploration time</li>
+                        <li><strong>Achievements</strong>: All unlocked achievements</li>
+                        <li><strong>Preferences</strong>: Language, display settings</li>
+                    </ol>
+
+                    <h2>Data Retained (none)</h2>
+                    <p><strong>We do NOT retain ANY data</strong> after deletion or app uninstallation, as we have no servers and never had access to your data.</p>
+                    <p>Only Google Play may retain your subscription purchase history (managed by Google, not by us).</p>
+
+                    <h2>No Need to Contact Us</h2>
+                    <p>You <strong>do not need to send us an email</strong> to request data deletion. You can delete your data yourself instantly using the methods above.</p>
+                    <p>We have no access to your data and therefore cannot delete it on your behalf.</p>
+                `,
+                contactTitle: "Questions?",
+                contactText: `If you have questions about data deletion or our privacy policy:<br><br><strong>Email:</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a><br><strong>Privacy Policy:</strong> <a href="privacy-policy.html">Read the full policy</a>`,
+                footerRights: "All rights reserved."
+            },
+            es: {
+                backLink: "← Volver",
+                title: "Eliminación de Datos",
+                lastUpdated: "Última actualización: 2 de enero de 2026",
+                content: `
+                    <p><strong>Lueur</strong> almacena todos tus datos <strong>localmente en tu dispositivo</strong>. No se transmiten datos a nuestros servidores porque no usamos ningún servidor.</p>
+
+                    <div class="info-box">
+                        <div class="info-header">
+                            <i data-lucide="info" style="width: 24px; height: 24px;"></i>
+                            <h2>Almacenamiento 100% Local</h2>
+                        </div>
+                        <p>Todos tus datos GPS, estadísticas y preferencias se almacenan en una base de datos SQLite directamente en tu teléfono. No poseemos ninguna copia de tus datos.</p>
+                    </div>
+
+                    <h2>Cómo Eliminar tus Datos</h2>
+                    <p>Tienes <strong>dos métodos</strong> para eliminar todos tus datos de exploración:</p>
+
+                    <h2>Método 1: Desde la App</h2>
+                    <ol>
+                        <li>Abre la aplicación <strong>Lueur</strong></li>
+                        <li>Ve a la pestaña <strong>Configuración</strong> (icono de engranaje abajo a la derecha)</li>
+                        <li>Desplázate hasta la sección <strong>"Datos"</strong></li>
+                        <li>Toca <strong>"Restablecer Datos"</strong></li>
+                        <li>Confirma la eliminación</li>
+                    </ol>
+                    <p>✅ <strong>Resultado:</strong> Todos tus datos GPS, estadísticas, logros y preferencias serán eliminados permanentemente.</p>
+
+                    <h2>Método 2: Desinstalar la App</h2>
+                    <ol>
+                        <li>Mantén presionado el icono de <strong>Lueur</strong> en tu pantalla de inicio</li>
+                        <li>Selecciona <strong>"Desinstalar"</strong> o <strong>"Eliminar"</strong></li>
+                        <li>Confirma la desinstalación</li>
+                    </ol>
+                    <p>✅ <strong>Resultado:</strong> La aplicación y <strong>todos sus datos</strong> serán eliminados automáticamente de tu dispositivo.</p>
+
+                    <div class="warning">
+                        <div class="warning-header">
+                            <i data-lucide="alert-triangle" style="width: 24px; height: 24px;"></i>
+                            <h2>Acción Irreversible</h2>
+                        </div>
+                        <p><strong>Advertencia:</strong> La eliminación de tus datos es <strong>permanente e irreversible</strong>. Una vez eliminados, tus exploraciones, estadísticas y logros no pueden recuperarse.</p>
+                        <p>No tenemos ninguna copia de seguridad de tus datos porque nunca salieron de tu dispositivo.</p>
+                    </div>
+
+                    <h2>Tipos de Datos Eliminados</h2>
+                    <p>Los siguientes datos serán eliminados:</p>
+                    <ol>
+                        <li><strong>Posiciones GPS</strong>: Todas tus coordenadas geográficas registradas</li>
+                        <li><strong>Mapa de Exploración</strong>: Las áreas que revelaste en el mapa</li>
+                        <li><strong>Estadísticas</strong>: Distancia recorrida, área explorada, tiempo de exploración</li>
+                        <li><strong>Logros</strong>: Todos los logros desbloqueados</li>
+                        <li><strong>Preferencias</strong>: Idioma, configuración de visualización</li>
+                    </ol>
+
+                    <h2>Datos Conservados (ninguno)</h2>
+                    <p><strong>NO conservamos NINGÚN dato</strong> después de la eliminación o desinstalación de la aplicación, ya que no tenemos servidores y nunca tuvimos acceso a tus datos.</p>
+                    <p>Solo Google Play puede conservar el historial de compras de tus suscripciones (gestionado por Google, no por nosotros).</p>
+
+                    <h2>No Necesitas Contactarnos</h2>
+                    <p><strong>No necesitas enviarnos un email</strong> para solicitar la eliminación de tus datos. Puedes eliminar tus datos tú mismo instantáneamente usando los métodos anteriores.</p>
+                    <p>No tenemos acceso a tus datos y por lo tanto no podemos eliminarlos en tu nombre.</p>
+                `,
+                contactTitle: "¿Preguntas?",
+                contactText: `Si tienes preguntas sobre la eliminación de datos o nuestra política de privacidad:<br><br><strong>Email:</strong> <a href="mailto:anhpati@gmail.com">anhpati@gmail.com</a><br><strong>Política de Privacidad:</strong> <a href="privacy-policy.html">Leer la política completa</a>`,
+                footerRights: "Todos los derechos reservados."
+            }
+        };
+
+        function detectLanguage() {
+            const saved = localStorage.getItem('lueur-lang');
+            if (saved && t[saved]) return saved;
+            const browserLang = navigator.language.toLowerCase().split('-')[0];
+            return t[browserLang] ? browserLang : 'fr';
+        }
+
+        function updateContent(lang) {
+            const trans = t[lang];
+            document.documentElement.lang = lang;
+            document.getElementById('back-link').textContent = trans.backLink;
+            document.getElementById('title').textContent = trans.title;
+            document.getElementById('last-updated').textContent = trans.lastUpdated;
+            document.getElementById('content').innerHTML = trans.content;
+            document.getElementById('contact-title').textContent = trans.contactTitle;
+            document.getElementById('contact-text').innerHTML = trans.contactText;
+            document.getElementById('footer-rights').textContent = trans.footerRights;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            localStorage.setItem('lueur-lang', lang);
+            lucide.createIcons();
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => updateContent(btn.dataset.lang));
+        });
+
+        updateContent(detectLanguage());
     </script>
 </body>
 </html>
