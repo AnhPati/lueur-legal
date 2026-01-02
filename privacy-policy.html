@@ -31,10 +31,31 @@
             border: 1px solid rgba(255, 215, 0, 0.1);
         }
 
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+
+        .logo-container {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         h1 {
             color: #FFD700;
-            margin-bottom: 10px;
-            font-size: 2.5em;
+            font-size: 2em;
             text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
         }
 
@@ -97,12 +118,46 @@
             color: #666;
             font-size: 0.9em;
         }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .back-link:hover {
+            color: #FFD700;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🗺️ Politique de Confidentialité</h1>
-        <p class="last-updated">Dernière mise à jour : 25 décembre 2024</p>
+        <a href="index.html" class="back-link">← Retour</a>
+
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/anhpati/lueur-legal/main/lueur-logo.png" alt="Lueur Logo" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#FFD700;color:#0A0A0A;font-size:1.5em;font-weight:bold;&quot;>L</div>'">
+            </div>
+            <h1>Politique de Confidentialité</h1>
+        </div>
+        <p class="last-updated">Dernière mise à jour : 2 janvier 2025</p>
 
         <p>
             Lueur est une application mobile de géolocalisation qui vous permet d'explorer le monde et de révéler
@@ -151,7 +206,7 @@
         <h2>6. Suppression des données</h2>
         <p>
             Vous pouvez supprimer toutes vos données à tout moment via les paramètres de l'application
-            (section "Danger Zone" > "Réinitialiser les données"). Cette action est irréversible.
+            (section "Données" > "Réinitialiser les données"). Cette action est irréversible.
         </p>
         <p>
             Désinstaller l'application supprime également automatiquement toutes les données stockées localement.
@@ -186,7 +241,7 @@
         </div>
 
         <div class="footer">
-            <p>© 2024 Lueur. Tous droits réservés.</p>
+            <p>© <script>document.write(new Date().getFullYear())</script> Lueur. Tous droits réservés.</p>
         </div>
     </div>
 </body>
